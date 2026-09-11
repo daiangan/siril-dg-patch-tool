@@ -1,6 +1,7 @@
 # DG PATCH TOOL
 
 [![Latest Release](https://img.shields.io/github/v/release/daiangan/siril-dg-patch-tool?color=007acc&label=Release)](https://github.com/daiangan/siril-dg-patch-tool/releases/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Donate PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg?logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=48L9ULQ5PTS9A)
 
 A high-performance patch, clone, and heal cleanup tool designed specifically for deep-sky astrophotography processing in **Siril**.
@@ -250,3 +251,5 @@ Developed by **Daian Gan**
 - Email: [daian@ganmedia.com](mailto:daian@ganmedia.com)  
 - Web: [https://daiangan.com](https://daiangan.com)  
 - GitHub: [https://github.com/daiangan/siril-dg-patch-tool](https://github.com/daiangan/siril-dg-patch-tool)
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
