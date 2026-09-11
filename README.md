@@ -1,5 +1,8 @@
 # DG PATCH TOOL
 
+[![Latest Release](https://img.shields.io/github/v/release/daiangan/siril-dg-patch-tool?color=007acc&label=Release)](https://github.com/daiangan/siril-dg-patch-tool/releases/latest)
+[![Donate PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg?logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=48L9ULQ5PTS9A)
+
 A high-performance patch, clone, and heal cleanup tool designed specifically for deep-sky astrophotography processing in **Siril**.
 
 Residual star halos, diffraction spikes, color blotches, and gradient artifacts often remain after separating nebulae from stars in starless workflows (e.g., Starnet++, StarXTerminator). **DG Patch Tool** allows you to seamlessly repair and heal these artifacts directly inside your Siril workflow without intermediate TIFF exports or third-party graphic editors like Photoshop or Affinity Photo.
@@ -160,15 +163,28 @@ where $\alpha \in [0.0, 1.0]$ is the real-time opacity value.
 
 ## Installation in Siril
 
-1. Ensure **Siril** (version 1.2 or later) is installed.
-2. In Siril, go to **Preferences > Scripts** to confirm your user script directory (e.g., `~/Siril/scripts` or `~/siril/scripts`).
-3. Build and bundle the single-file script:
+### Option 1: Direct Download (Recommended)
+
+1. Download the standalone **[`DG_Patch_Tool.py`](https://github.com/daiangan/siril-dg-patch-tool/releases/latest/download/DG_Patch_Tool.py)** from the [Latest Release (v0.1.0)](https://github.com/daiangan/siril-dg-patch-tool/releases/latest).
+2. Copy `DG_Patch_Tool.py` into your Siril user scripts directory:
+   - **macOS / Linux**: `~/Siril/scripts/` or `~/siril/scripts/` (or `~/.local/share/siril/scripts/`)
+   - **Windows**: `C:\Users\<Username>\AppData\Local\siril\scripts\`
+3. In Siril, select **Scripts > Reload Scripts** (or restart Siril).
+4. **"DG_Patch_Tool"** will now appear in your Siril **Scripts** menu.
+
+### Option 2: Build from Source
+
+1. Clone the repository and navigate into the folder:
+   ```bash
+   git clone https://github.com/daiangan/siril-dg-patch-tool.git
+   cd siril-dg-patch-tool
+   ```
+2. Build and bundle the script:
    ```bash
    python build/bundle.py
    ```
-   This compiles the modular `dg_patch_tool/` package into a standalone file `DG_Patch_Tool.py` and copies it directly into detected Siril script folders.
-4. In Siril, select **Scripts > Reload Scripts** (or restart Siril).
-5. **"DG_Patch_Tool"** will now appear in Siril's **Scripts** menu.
+   This compiles the modular `dg_patch_tool/` package into a standalone `DG_Patch_Tool.py` and copies it directly into detected Siril script folders.
+3. In Siril, select **Scripts > Reload Scripts**.
 
 ---
 
