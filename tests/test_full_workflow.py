@@ -121,6 +121,35 @@ def test_siril_bridge_undo_save_state():
     assert len(mock_siril.pixeldata_calls) == 1
 
 
+def test_siril_bridge_log_and_banner():
+    class MockSiril:
+        def __init__(self):
+            self.log_calls = []
+
+        def log(self, message: str):
+            self.log_calls.append(message)
+            return True
+
+    bridge = SirilBridge()
+    mock_siril = MockSiril()
+    bridge.siril = mock_siril
+    bridge.connected = True
+
+    from dg_patch_tool.app import _STARTUP_BANNER_LINES
+
+    for line in _STARTUP_BANNER_LINES:
+        bridge.log(line)
+
+    assert len(mock_siril.log_calls) == len(_STARTUP_BANNER_LINES)
+    assert mock_siril.log_calls[0] == "================================================"
+    assert mock_siril.log_calls[1] == "DG Patch Tool"
+    assert mock_siril.log_calls[2] == "Author: Daian Gan"
+    assert mock_siril.log_calls[3] == "Email:  daian@ganmedia.com"
+    assert mock_siril.log_calls[4] == "Web:    https://daiangan.com"
+    assert mock_siril.log_calls[5] == "================================================"
+
+
+
 def test_large_roi_downsampled_preview_and_full_confirm(qapp):
     """Tests adaptive downsampling on large ROI (>256px) and full-res confirmation."""
     bridge = SirilBridge()

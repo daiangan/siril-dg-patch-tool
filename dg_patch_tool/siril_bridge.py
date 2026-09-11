@@ -76,6 +76,20 @@ class SirilBridge:
                 return True
         return False
 
+    def log(self, message: str) -> bool:
+        """
+        Writes a line to Siril's own log/console panel.
+        Falls back to print() if Siril is not connected (e.g. standalone mode).
+        """
+        if self.is_connected() and hasattr(self.siril, "log"):
+            try:
+                self.siril.log(message)
+                return True
+            except Exception:
+                pass
+        print(message, flush=True)
+        return False
+
     @staticmethod
     def generate_synthetic_starless() -> np.ndarray:
         """
