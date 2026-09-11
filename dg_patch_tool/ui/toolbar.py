@@ -1,5 +1,5 @@
-from PyQt6.QtCore import Qt, pyqtSignal
-from PyQt6.QtGui import QIcon, QKeySequence, QShortcut
+from PyQt6.QtCore import Qt, pyqtSignal, QUrl
+from PyQt6.QtGui import QIcon, QKeySequence, QShortcut, QDesktopServices
 from PyQt6.QtWidgets import (
     QToolBar,
     QComboBox,
@@ -22,6 +22,8 @@ class PatchToolBar(QToolBar):
     Main toolbar providing selection tools, blending algorithm selector,
     real-time opacity and feather sliders, undo/redo, and the 'Apply to Siril' button.
     """
+
+    DONATE_URL = "https://www.paypal.com/donate/?hosted_button_id=48L9ULQ5PTS9A"
 
     tool_changed = pyqtSignal(str)
     algorithm_changed = pyqtSignal(str)
@@ -232,12 +234,40 @@ class PatchToolBar(QToolBar):
         self.btn_apply.clicked.connect(self.apply_requested.emit)
         self.addWidget(self.btn_apply)
 
-        # Spacing separation between Apply and Close
-        btn_sep = QWidget()
-        btn_sep.setFixedWidth(14)
-        self.addWidget(btn_sep)
+        # Spacing separation
+        btn_sep1 = QWidget()
+        btn_sep1.setFixedWidth(8)
+        self.addWidget(btn_sep1)
 
-        # 8. Close Window Button
+        # 8. Buy Me a Coffee Button
+        self.btn_coffee = QPushButton("☕")
+        self.btn_coffee.setToolTip("Buy me a coffee — Support this project")
+        self.btn_coffee.setStyleSheet("""
+            QPushButton {
+                background: #92400e;
+                color: #ffffff;
+                font-size: 14px;
+                border: 1px solid #b45309;
+                padding: 4px 10px;
+                border-radius: 4px;
+            }
+            QPushButton:hover {
+                background: #b45309;
+                border-color: #d97706;
+            }
+            QPushButton:pressed {
+                background: #78350f;
+            }
+        """)
+        self.btn_coffee.clicked.connect(lambda: QDesktopServices.openUrl(QUrl(self.DONATE_URL)))
+        self.addWidget(self.btn_coffee)
+
+        # Spacing separation
+        btn_sep2 = QWidget()
+        btn_sep2.setFixedWidth(8)
+        self.addWidget(btn_sep2)
+
+        # 9. Close Window Button
         self.btn_close = QPushButton("Close")
         self.btn_close.setToolTip("Close the DG_Patch_Tool window")
         self.btn_close.setStyleSheet("""
