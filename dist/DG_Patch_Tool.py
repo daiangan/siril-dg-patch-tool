@@ -1178,6 +1178,8 @@ from PyQt6.QtGui import (
     QWheelEvent,
     QKeyEvent,
     QCursor,
+    QBrush,
+    QColor,
 )
 from PyQt6.QtWidgets import QGraphicsView
 
@@ -1214,7 +1216,8 @@ class CanvasView(QGraphicsView):
         self.setResizeAnchor(QGraphicsView.ViewportAnchor.AnchorUnderMouse)
         self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
         self.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
-        self.setBackgroundBrush(Qt.GlobalColor.darkGray)
+        self.setStyleSheet("QGraphicsView { border: none; background-color: #141518; }")
+        self.setBackgroundBrush(QBrush(QColor("#141518")))
 
         # State
         self.state = self.STATE_READY
@@ -2468,18 +2471,19 @@ class PatchToolBar(QToolBar):
         self.btn_apply.setToolTip("Writes composite result directly to Siril memory")
         self.btn_apply.setStyleSheet("""
             QPushButton {
-                background: #059669;
+                background: #2563eb;
                 color: #ffffff;
                 font-weight: bold;
-                border: 1px solid #10b981;
+                border: 1px solid #3b82f6;
                 padding: 6px 14px;
                 border-radius: 4px;
             }
             QPushButton:hover {
-                background: #10b981;
+                background: #3b82f6;
+                border-color: #60a5fa;
             }
             QPushButton:pressed {
-                background: #047857;
+                background: #1d4ed8;
             }
         """)
         self.btn_apply.clicked.connect(self.apply_requested.emit)

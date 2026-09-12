@@ -217,18 +217,19 @@ class PatchToolBar(QToolBar):
         self.btn_apply.setToolTip("Writes composite result directly to Siril memory")
         self.btn_apply.setStyleSheet("""
             QPushButton {
-                background: #059669;
+                background: #2563eb;
                 color: #ffffff;
                 font-weight: bold;
-                border: 1px solid #10b981;
+                border: 1px solid #3b82f6;
                 padding: 6px 14px;
                 border-radius: 4px;
             }
             QPushButton:hover {
-                background: #10b981;
+                background: #3b82f6;
+                border-color: #60a5fa;
             }
             QPushButton:pressed {
-                background: #047857;
+                background: #1d4ed8;
             }
         """)
         self.btn_apply.clicked.connect(self.apply_requested.emit)

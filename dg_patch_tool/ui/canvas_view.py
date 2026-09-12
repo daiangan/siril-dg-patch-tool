@@ -7,6 +7,8 @@ from PyQt6.QtGui import (
     QWheelEvent,
     QKeyEvent,
     QCursor,
+    QBrush,
+    QColor,
 )
 from PyQt6.QtWidgets import QGraphicsView
 
@@ -43,7 +45,8 @@ class CanvasView(QGraphicsView):
         self.setResizeAnchor(QGraphicsView.ViewportAnchor.AnchorUnderMouse)
         self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
         self.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
-        self.setBackgroundBrush(Qt.GlobalColor.darkGray)
+        self.setStyleSheet("QGraphicsView { border: none; background-color: #141518; }")
+        self.setBackgroundBrush(QBrush(QColor("#141518")))
 
         # State
         self.state = self.STATE_READY
